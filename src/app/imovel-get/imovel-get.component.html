@@ -1,0 +1,37 @@
+<div class="container">
+
+        <h2>Imóveis Disponíveis</h2>
+        <label class="form-label">Filtro</label>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="selecao">
+                <option selected>tudo</option>
+                <option *ngFor="let t of tiposDisponiveis" >{{t}}</option>
+                >
+        </select>
+
+        <a class="btn btn-primary" routerLink="add" routerLinkActive="active">+ Adicionar
+                Imóvel</a>
+
+        <div class="row row-cols-3 mx">
+                <ng-container *ngFor="let i of imoveis">
+                        <ng-container *ngIf="selecao == 'tudo' || i.tipo == selecao">
+                                <div class="card col" *ngIf="i.disponivel == 'S'">
+                                        <img src="{{i.imagem}}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                                <h5 class="card-title">R$ {{i.preco}}</h5>
+                                                <p class="card-text">{{i.descricao}}</p>
+                                                <p class="card-text">Vendedor: {{i.nome_vendedor}}</p>
+                                                <button routerLink="edit/{{i.codigo}}"
+                                                        class="btn btn-primary">Editar</button>
+                                                <button class="btn btn-primary"
+                                                        (click)="deletarImovel(i.codigo)">Excluir</button>
+                                        </div>
+                                </div>
+                        </ng-container>
+                </ng-container>
+        </div>
+
+
+
+
+
+</div>

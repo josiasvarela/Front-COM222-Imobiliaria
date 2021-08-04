@@ -1,0 +1,31 @@
+<div id="titulo" class="container">
+    <h3>
+        Alterando Corretor
+    </h3>
+</div>
+
+<div *ngIf="flag" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Corretor alterado com Sucesso!</strong>
+    <button (Click)="changeFlag()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="corretorForm" (ngSubmit)="alteraCorretor()">
+            <div class="container">
+
+                <div *ngIf="tipo == 'contratado'" class="mb-3">
+                    <label class="form-label">Salário</label>
+                    <input class="form-control" name="salario" formControlName="salario">
+                </div>
+
+                <div *ngIf="tipo == 'comissionado'" class="mb-3">
+                    <label class="form-label">Comissão</label>
+                    <input type="text" class="form-control" name="comissao" formControlName="comissao">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Alterar</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div id="titulo" class="container">
+    <h3>
+        Alterando Imóvel
+    </h3>
+</div>
+
+<div *ngIf="flag" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Imovel alterado com Sucesso!</strong>
+    <button (Click)="changeFlag()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="imovelForm" (ngSubmit)="alteraImovel()">
+            <div class="container">
+
+                <div class="mb-3">
+                    <label class="form-label">Descrição</label>
+                    <textarea class="form-control" name="descricao" formControlName="descricao" #descricao></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nome do Vendedor</label>
+                    <input type="text" class="form-control" name="nome_vendedor" formControlName="nome_vendedor"
+                        #vendedor>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Valor</label>
+                    <input type="text" class="form-control" name="preco" formControlName="preco" #valor>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Imagem</label><br>
+                    <input type="text" class="form-control" name="imagem" formControlName="imagem" #imagem>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Data de Cadastro</label>
+                    <input type="text" class="form-control" name="data_cadastro" formControlName="data_cadastro" #data>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Alterar</button>
+            </div>
+        </form>
+    </div>
+</div>

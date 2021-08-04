@@ -1,0 +1,53 @@
+<div id="titulo" class="container">
+    <h3>
+        Cadastrando novo Corretor
+    </h3>
+</div>
+
+<div *ngIf="flag" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Corretor cadastrado com Sucesso!</strong>
+    <button (Click)="changeFlag()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="corretorForm" (ngSubmit)="insereCorretor()">
+            <div class="container">
+
+                <div class="mb-3">
+                    <label class="form-label">Tipo</label>
+                    <select class="form-select" aria-label="Default select example" name=tipo formControlName="tipo"[(ngModel)]="selecao" >
+                        <option *ngFor="let t of tipos" selected>{{t}}</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nome</label>
+                    <input type="text" class="form-control" name="nome" formControlName="nome">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">CRECI</label>
+                    <input type="text" class="form-control" name="creci" formControlName="creci">
+                </div>
+
+                <div class="mb-3" *ngIf="selecao == 'comissionado'">
+                    <label class="form-label">Comisão</label>
+                    <input type="text" class="form-control" name="comissao" formControlName="comissao">
+                </div>
+
+                <div class="mb-3" *ngIf="selecao == 'contratado'">
+                    <label class="form-label" >Salário</label><br>
+                    <input type="text" class="form-control" name="salario" formControlName="salario">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Data de Admissão</label>
+                    <input type="text" class="form-control" name="data_admissao" formControlName="data_admissao">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Adicionar</button>
+            </div>
+        </form>
+    </div>
+</div>

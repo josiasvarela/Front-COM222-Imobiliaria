@@ -1,0 +1,43 @@
+<div class="container">
+
+    <h2>Corretores Cadastrados</h2>
+
+    <a class="btn btn-primary" routerLink="add" routerLinkActive="active">+ Adicionar
+        Corretor
+    </a>
+
+    <div class="">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">CRECI</th>
+                    <th scope="col">Salário</th>
+                    <th scope="col">Comissão</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let c of corretores" scope="row">
+                    <td>{{c.nome}}</td>
+                    <td>{{c.tipo}}</td>
+                    <td>{{c.creci}}</td>
+                    <td>{{c.salario}}</td>
+                    <td>{{c.comissao}}%</td>
+                    <td>
+                        <button routerLink="edit/{{c.creci}}" class="btn btn-primary btn-iteracao">Editar</button>
+                        <button class="btn btn-primary btn-interacao" (click)="deletaCorretor(c.creci)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+</div>
