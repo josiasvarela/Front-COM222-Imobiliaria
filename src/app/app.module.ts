@@ -14,7 +14,11 @@ import { CorretorGetComponent } from './corretor-get/corretor-get.component';
 import { CorretorAddComponent } from './corretor-add/corretor-add.component';
 import { CorretorServiceService } from './corretor-service.service';
 import { CorretorEditComponent } from './corretor-edit/corretor-edit.component';
-
+import { VendaAddComponent } from './venda-add/venda-add.component';
+import { VendaGetComponent } from './venda-get/venda-get.component';
+import { VendaService } from './venda.service';
+import { PagamentoComponent } from './pagamento/pagamento.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { CorretorEditComponent } from './corretor-edit/corretor-edit.component';
     ImovelEditComponent,
     CorretorGetComponent,
     CorretorAddComponent,
-    CorretorEditComponent
+    CorretorEditComponent,
+    VendaAddComponent,
+    VendaGetComponent,
+    PagamentoComponent,
+    RelatorioComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +43,8 @@ import { CorretorEditComponent } from './corretor-edit/corretor-edit.component';
     FormsModule
   ],
   providers: [ImovelService,
-    CorretorServiceService
+    CorretorServiceService,
+    VendaService
   ],
   bootstrap: [AppComponent]
 })

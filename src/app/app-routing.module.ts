@@ -7,6 +7,10 @@ import { ImovelEditComponent } from './imovel-edit/imovel-edit.component';
 import { CorretorGetComponent } from './corretor-get/corretor-get.component';
 import { CorretorAddComponent } from './corretor-add/corretor-add.component';
 import { CorretorEditComponent } from './corretor-edit/corretor-edit.component';
+import { VendaAddComponent } from './venda-add/venda-add.component';
+import { VendaGetComponent } from './venda-get/venda-get.component';
+import { PagamentoComponent } from './pagamento/pagamento.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
 
 const routes: Routes = [
   {
@@ -32,6 +36,22 @@ const routes: Routes = [
   {
     path: 'corretores/edit/:id',
     component: CorretorEditComponent
+  },
+  {
+    path: 'vendas',
+    component: VendaGetComponent
+  },
+  {
+    path: 'vendas/add',
+    component: VendaAddComponent
+  },
+  {
+    path: 'pagamentos',
+    component: PagamentoComponent
+  },
+  {
+    path: 'relatorios',
+    component: RelatorioComponent
   }
   
 ];

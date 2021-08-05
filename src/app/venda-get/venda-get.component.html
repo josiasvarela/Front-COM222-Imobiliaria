@@ -1,0 +1,38 @@
+<div class="container">
+
+    <h2>Vendas Realizadas</h2>
+
+    <a class="btn btn-primary" routerLink="add" routerLinkActive="active">+ Adicionar
+        Venda
+    </a>
+
+    <div class="">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Comprador</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Corretor</th>
+                    <th scope="col">Imóvel</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let v of vendas" scope="row">
+                    <td>{{v.nome_comprador}}</td>
+                    <td>{{v.data_venda}}</td>
+                    <td>{{v.valor}}</td>
+                    <td>{{v.creci_corretor}}</td>
+                    <td>{{v.codigo_imovel}}</td>                    
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+</div>

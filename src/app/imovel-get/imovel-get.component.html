@@ -5,7 +5,7 @@
         <select class="form-select" aria-label="Default select example" [(ngModel)]="selecao">
                 <option selected>tudo</option>
                 <option *ngFor="let t of tiposDisponiveis" >{{t}}</option>
-                >
+                
         </select>
 
         <a class="btn btn-primary" routerLink="add" routerLinkActive="active">+ Adicionar
@@ -20,6 +20,7 @@
                                                 <h5 class="card-title">R$ {{i.preco}}</h5>
                                                 <p class="card-text">{{i.descricao}}</p>
                                                 <p class="card-text">Vendedor: {{i.nome_vendedor}}</p>
+                                                <p class="card-text">Id: {{i.codigo}}</p>
                                                 <button routerLink="edit/{{i.codigo}}"
                                                         class="btn btn-primary">Editar</button>
                                                 <button class="btn btn-primary"

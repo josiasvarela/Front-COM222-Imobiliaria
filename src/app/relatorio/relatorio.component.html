@@ -1,0 +1,50 @@
+<div class="container">
+
+    <h2>Relatórios</h2>
+
+    <label class="form-label">Mês</label>
+    <input type="text" class="form-control" [(ngModel)]="mes">
+    <label class="form-label">Ano</label>
+    <input type="text" class="form-control" [(ngModel)]="ano">
+    <button (click)="filtrarIntervalo()" class="btn btn-primary" >Filtrar </button>
+
+
+
+    <div >
+        <h4>Faturamento total Imobiliaria</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Total Vendido</th>
+                    <th scope="col">Faturamento</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr scope="row">
+                    <td>{{VendasTotal}}</td>
+                    <td>{{Faturamento}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div >
+        <h4>Imóveis Vendidos</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Valor</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let i of total_vendas" scope="row">
+                    <td>{{i.codigo_imovel}}</td>
+                    <td>{{i.valor}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

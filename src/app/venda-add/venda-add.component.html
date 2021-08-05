@@ -1,0 +1,46 @@
+<div id="titulo" class="container">
+    <h3>
+        Cadastrando nova Venda
+    </h3>
+</div>
+
+<div *ngIf="flag" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Corretor cadastrado com Sucesso!</strong>
+    <button (Click)="changeFlag()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="vendaForm" (ngSubmit)="insereVenda()">
+            <div class="container">
+
+                <div class="mb-3">
+                    <label class="form-label">Valor</label>
+                    <input type="text" class="form-control" name="valor" formControlName="valor">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Comprador</label>
+                    <input type="text" class="form-control" name="nome_comprador" formControlName="nome_comprador">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Corretor</label>
+                    <input type="text" class="form-control" name="creci_corretor" formControlName="creci_corretor">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" >Imóvel</label><br>
+                    <input type="text" class="form-control" name="codigo_imovel" formControlName="codigo_imovel">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Data de Venda</label>
+                    <input type="text" class="form-control" name="data_venda" formControlName="data_venda">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Adicionar</button>
+            </div>
+        </form>
+    </div>
+</div>

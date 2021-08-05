@@ -38,7 +38,6 @@ export class CorretorAddComponent implements OnInit {
         comissao: new FormControl('1'),
         salario: new FormControl(null),
         data_admissao: new FormControl('')
-
       });
     });
 
