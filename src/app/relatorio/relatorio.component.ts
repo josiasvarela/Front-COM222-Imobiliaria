@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { VendaService } from '../venda.service';
+import { VendasCorretor } from '../vendas-corretor';
 
 @Component({
   selector: 'app-relatorio',
   templateUrl: './relatorio.component.html',
   styleUrls: ['./relatorio.component.css']
 })
+
 export class RelatorioComponent implements OnInit {
 
   mes: any;
@@ -16,7 +18,6 @@ export class RelatorioComponent implements OnInit {
   VendasTotal: number = 0;
 
   Faturamento: number = 0;
-
 
   constructor(private vendaService: VendaService) { }
 

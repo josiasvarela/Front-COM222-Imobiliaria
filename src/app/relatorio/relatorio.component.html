@@ -6,11 +6,11 @@
     <input type="text" class="form-control" [(ngModel)]="mes">
     <label class="form-label">Ano</label>
     <input type="text" class="form-control" [(ngModel)]="ano">
-    <button (click)="filtrarIntervalo()" class="btn btn-primary" >Filtrar </button>
+    <button (click)="filtrarIntervalo()" class="btn btn-primary">Filtrar </button>
 
 
 
-    <div >
+    <div>
         <h4>Faturamento total Imobiliaria</h4>
         <table class="table">
             <thead>
@@ -29,7 +29,7 @@
         </table>
     </div>
 
-    <div >
+    <div>
         <h4>Imóveis Vendidos</h4>
         <table class="table">
             <thead>
@@ -46,5 +46,34 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div>
+        <h4>Pagamento dos corretores</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Corretor</th>
+                    <th scope="col">Valor total de Vendas</th>
+                    <th scope="col">% Comissão</th>
+                    <th scope="col">Comissão</th>
+                    <th scope="col">Salario</th>
+                    <th scope="col">Pagamento Total</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr scope="row">
+                    <td>{{mes}}</td>
+                    <td>{{ano}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>
