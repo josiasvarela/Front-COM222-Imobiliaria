@@ -2,78 +2,161 @@
 
     <h2>Relatórios</h2>
 
-    <label class="form-label">Mês</label>
+    <label class="form-label">Mês (MM) </label>
     <input type="text" class="form-control" [(ngModel)]="mes">
-    <label class="form-label">Ano</label>
+    <label class="form-label">Ano (AAAA)</label>
     <input type="text" class="form-control" [(ngModel)]="ano">
     <button (click)="filtrarIntervalo()" class="btn btn-primary">Filtrar </button>
 
 
+    <div *ngIf="flag==true">
 
-    <div>
-        <h4>Faturamento total Imobiliaria</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Total Vendido</th>
-                    <th scope="col">Faturamento</th>
-                </tr>
-            </thead>
 
-            <tbody>
-                <tr scope="row">
-                    <td>{{VendasTotal}}</td>
-                    <td>{{Faturamento}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <div>
+            <h4>Faturamento total Imobiliaria</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Total Vendido</th>
+                        <th scope="col">Faturamento</th>
+                    </tr>
+                </thead>
 
-    <div>
-        <h4>Imóveis Vendidos</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Valor</th>
-                </tr>
-            </thead>
+                <tbody>
+                    <tr scope="row">
+                        <td>{{VendasTotal}}</td>
+                        <td>{{Faturamento}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <tbody>
-                <tr *ngFor="let i of total_vendas" scope="row">
-                    <td>{{i.codigo_imovel}}</td>
-                    <td>{{i.valor}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <div>
+            <h4>Lucro Total</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Faturamento</th>
+                        <th scope="col">Despesas</th>
+                        <th scope="col">Lucro</th>
+                    </tr>
+                </thead>
 
-    <div>
-        <h4>Pagamento dos corretores</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Corretor</th>
-                    <th scope="col">Valor total de Vendas</th>
-                    <th scope="col">% Comissão</th>
-                    <th scope="col">Comissão</th>
-                    <th scope="col">Salario</th>
-                    <th scope="col">Pagamento Total</th>
+                <tbody>
+                    <tr scope="row">
+                        <td>{{Faturamento}}</td>
+                        <td>{{despesas}}</td>
+                        <td>{{(Faturamento - despesas)}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                </tr>
-            </thead>
 
-            <tbody>
-                <tr scope="row">
-                    <td>{{mes}}</td>
-                    <td>{{ano}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <h4>Imóveis Vendidos</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Valor</th>
+                    </tr>
+                </thead>
 
+                <tbody>
+                    <tr *ngFor="let i of total_vendas" scope="row">
+                        <td>{{i.codigo_imovel}}</td>
+                        <td>{{i.valor}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h4>Imóveis Encalhados</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Cadastrado desde:</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let i of imoveis_encalhados" scope="row">
+                        <td>{{i.codigo}}</td>
+                        <td>{{i.data_cadastro}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h4>Pagamento dos corretores</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Corretor</th>
+                        <th scope="col">Valor total de Vendas</th>
+                        <th scope="col">% Comissão</th>
+                        <th scope="col">Salario</th>
+                        <th scope="col">Pagamento Total</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let a of auxiliar" scope="row">
+                        <td>{{ a.creci }}</td>
+                        <td>{{ a.venda}}</td>
+                        <td>{{a.comissao}}</td>
+                        <td>{{a.salario}}</td>
+                        <td> {{ (a.salario + ((a.comissao * a.venda)/100)) }} </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <div>
+            <h4>Faturamento dos Corretores</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Corretor</th>
+                        <th scope="col">Faturamento</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let a of auxiliar" scope="row">
+                        <td>{{ a.creci }}</td>
+                        <td>{{ a.venda * 0.05}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div>
+            <h4>Corretor do Mês</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Creci</th>
+                        <th scope="col">Valor ganho em Comissões</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr scope="row">
+                        <td>{{creciMes}}</td>
+                        <td>{{comissaoMes}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

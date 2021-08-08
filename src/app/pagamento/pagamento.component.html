@@ -17,7 +17,6 @@
                     <th scope="col">Corretor</th>
                     <th scope="col">Valor total de Vendas</th>
                     <th scope="col">% Comissão</th>
-                    <th scope="col">Comissão</th>
                     <th scope="col">Salario</th>
                     <th scope="col">Pagamento Total</th>
 
@@ -25,13 +24,12 @@
             </thead>
 
             <tbody>
-                <tr scope="row">
-                    <td>{{mes}}</td>
-                    <td>{{ano}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr *ngFor="let a of auxiliar" scope="row">
+                    <td>{{ a.creci }}</td>
+                    <td>{{ a.venda}}</td>
+                    <td>{{a.comissao}}</td>
+                    <td>{{a.salario}}</td>
+                    <td> {{ (a.salario + ((a.comissao * a.venda)/100)) }} </td>
                 </tr>
             </tbody>
         </table>

@@ -5,6 +5,4 @@ export class VendasCorretor {
         public salario: number,
         public venda: number
     ) { }
-
-
 }

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { VendaService } from '../venda.service';
+import { CorretorServiceService } from '../corretor-service.service';
+import { ImovelService } from '../imovel.service';
+import { VendasCorretor } from '../vendas-corretor';
+
 
 @Component({
   selector: 'app-pagamento',
@@ -12,20 +16,46 @@ export class PagamentoComponent implements OnInit {
   mes: any;
   ano: any;
 
-  vector: any = [];
+  total_vendas: any = [];
+  corretores: any = [];
+  auxiliar: any = [];
 
-  vendas_corretor_mes: any = [];
-
-  constructor() { }
+  constructor(private vendaService: VendaService, private corretorService: CorretorServiceService) { }
 
   filtrarPagamentos() {
-    console.log('ola');
-    //this.vendaService.getVendasporCorretor(this.mes, this.ano).subscribe((data) => {
-      //this.vector = data;
-    //})
+
+    this.vendaService.getVendasMes(this.mes, this.ano).subscribe((data) => {
+      this.total_vendas = data;
+
+      
+
+        this.auxiliar = [];
+
+        for (let c of this.corretores) {
+
+          let valor = 0;
+
+          for (let v of this.total_vendas) {
+
+            if (c.creci == v.creci_corretor) {
+              valor += v.valor;
+            }
+          }
+
+          let vc = new VendasCorretor(c.creci, c.comissao, c.salario, valor);
+          this.auxiliar.push(vc);
+        }
+
+
+    });
+
   }
 
   ngOnInit(): void {
+
+    this.corretorService.getCorretores().subscribe((data) => {
+      this.corretores = data;
+    });
   }
 
 }
