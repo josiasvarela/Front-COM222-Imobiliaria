@@ -6,6 +6,12 @@
     <input type="text" class="form-control" [(ngModel)]="mes">
     <label class="form-label">Ano</label>
     <input type="text" class="form-control" [(ngModel)]="ano">
+    <label class="form-label">Filtro</label>
+    <select (change)="filtrarPagamentos()" class="form-select" aria-label="Default select example" [(ngModel)]="creciSelecionado">
+        <option selected>Todos</option>
+        <option *ngFor="let c of corretores" >{{c.creci}}</option>
+        
+</select>
     <button (click)="filtrarPagamentos()" class="btn btn-primary" >Consultar</button>
 
 

@@ -20,6 +20,8 @@ export class PagamentoComponent implements OnInit {
   corretores: any = [];
   auxiliar: any = [];
 
+  creciSelecionado: String = '';
+
   constructor(private vendaService: VendaService, private corretorService: CorretorServiceService) { }
 
   filtrarPagamentos() {
@@ -27,10 +29,9 @@ export class PagamentoComponent implements OnInit {
     this.vendaService.getVendasMes(this.mes, this.ano).subscribe((data) => {
       this.total_vendas = data;
 
-      
+      this.auxiliar = [];
 
-        this.auxiliar = [];
-
+      if (this.creciSelecionado == "Todos" || this.creciSelecionado == "") {
         for (let c of this.corretores) {
 
           let valor = 0;
@@ -45,8 +46,26 @@ export class PagamentoComponent implements OnInit {
           let vc = new VendasCorretor(c.creci, c.comissao, c.salario, valor);
           this.auxiliar.push(vc);
         }
+      } else {
+        for (let c of this.corretores) {
+          if (c.creci == this.creciSelecionado) {
 
 
+            let valor = 0;
+
+            for (let v of this.total_vendas) {
+
+              if (c.creci == v.creci_corretor) {
+                valor += v.valor;
+              }
+            }
+
+            let vc = new VendasCorretor(c.creci, c.comissao, c.salario, valor);
+            this.auxiliar.push(vc);
+
+          }
+        }
+      }
     });
 
   }
